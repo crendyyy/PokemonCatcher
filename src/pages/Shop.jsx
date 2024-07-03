@@ -4,6 +4,10 @@ import Masterball from "../components/icons/Masterball";
 import Pokeball from "../components/icons/Pokeball";
 import Wallet from "../components/icons/Wallet";
 import PokeballImg from "../assets/Pokeball.png";
+import GreatBallImg from "../assets/GreatBall.png";
+import MasterBallImg from "../assets/MasterBall.png";
+import BackgroundHero from "../assets/BgShop.png";
+
 const Shop = () => {
   return (
     <>
@@ -35,7 +39,7 @@ const Shop = () => {
         <div className="w-full h-0.5 bg-gray-100"></div>
         <div className="flex w-full gap-6">
           <div className="flex flex-col w-full gap-4">
-            <div className="flex justify-center w-full py-5 bg-red-400 rounded-2xl">
+            <div className="flex justify-center w-full py-5 bg-red-400 h-52 rounded-2xl">
               <img src={PokeballImg} alt="" />
             </div>
             <div className="flex justify-between gap-10">
@@ -50,8 +54,8 @@ const Shop = () => {
             </div>
           </div>
           <div className="flex flex-col w-full gap-4">
-            <div className="flex justify-center w-full py-5 bg-red-400 rounded-2xl">
-              <img src={PokeballImg} alt="" />
+            <div className="flex justify-center w-full py-5 bg-blue-400 h-52 rounded-2xl">
+              <img src={GreatBallImg} alt="" />
             </div>
             <div className="flex justify-between gap-10">
               <div className="flex flex-col gap-2">
@@ -67,8 +71,8 @@ const Shop = () => {
             </div>
           </div>
           <div className="flex flex-col w-full gap-4">
-            <div className="flex justify-center w-full py-5 bg-red-400 rounded-2xl">
-              <img src={PokeballImg} alt="" />
+            <div className="flex justify-center w-full py-5 bg-purple-400 h-52 rounded-2xl">
+              <img src={MasterBallImg} alt="" />
             </div>
             <div className="flex justify-between gap-10">
               <div className="flex flex-col gap-2">

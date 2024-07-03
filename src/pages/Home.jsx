@@ -12,14 +12,14 @@ const Home = () => {
           <h2 className="!font-semibold">Start your Journey!!</h2>
           <Link
             to="/catchPokemon"
-            className="px-5 py-4 bg-[#2A85FF] text-sm font-bold rounded-xl text-white"
+            className="px-5 py-4 text-sm font-bold text-white bg-blue-500 hover:bg-blue-400 rounded-xl"
           >
             Catch Pokemon
           </Link>
         </div>
         <div className="p-6 flex flex-col gap-8 rounded-[20px] bg-white">
           <div className="flex gap-4">
-            <div className="w-4 h-8 bg-purple-100 rounded"></div>
+            <div className="w-4 h-8 bg-blue-100 rounded"></div>
             <h2>Overview</h2>
           </div>
           <div className="flex gap-3">

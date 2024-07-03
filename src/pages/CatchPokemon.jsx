@@ -1,6 +1,7 @@
 import Greatball from "../components/icons/Greatball";
 import Masterball from "../components/icons/Masterball";
 import Pokeball from "../components/icons/Pokeball";
+import PokeCardImg from "../assets/pokemonCard.png";
 
 const CatchPokemon = () => {
   return (
@@ -13,7 +14,7 @@ const CatchPokemon = () => {
         <div className="flex flex-col w-full gap-6">
           <h2>Chose Your Pokeball</h2>
           <div className="flex flex-col gap-2">
-            <div className="flex flex-col gap-2 border border-gray-200 border-solid rounded-xl">
+            <div className="flex flex-col gap-2 border-2 border-gray-200 border-solid hover:border-blue-500 rounded-xl">
               <div className="flex justify-start w-full gap-3 p-4">
                 <Pokeball />
                 <div className="flex flex-col">
@@ -22,7 +23,7 @@ const CatchPokemon = () => {
                 </div>
               </div>
             </div>
-            <div className="flex flex-col gap-2 border border-gray-200 border-solid rounded-xl">
+            <div className="flex flex-col gap-2 border-2 border-gray-200 border-solid hover:border-blue-500 rounded-xl">
               <div className="flex justify-start w-full gap-3 p-4">
                 <Greatball />
                 <div className="flex flex-col">
@@ -31,7 +32,7 @@ const CatchPokemon = () => {
                 </div>
               </div>
             </div>
-            <div className="flex flex-col gap-2 border border-gray-200 border-solid rounded-xl">
+            <div className="flex flex-col gap-2 border-2 border-gray-200 border-solid hover:border-blue-500 rounded-xl">
               <div className="flex justify-start w-full gap-3 p-4">
                 <Masterball />
                 <div className="flex flex-col">
@@ -41,11 +42,11 @@ const CatchPokemon = () => {
               </div>
             </div>
           </div>
-          <button className="w-full py-3 text-sm font-bold text-white bg-blue-500 rounded-xl">
+          <button className="w-full py-3 text-sm font-bold text-white bg-blue-500 rounded-xl hover:bg-blue-400">
             Catch a Pokemon
           </button>
         </div>
-        <img src="" alt="" className="w-96 h-96 rounded-2xl" />
+        <img src={PokeCardImg} alt="" className="w-96 h-96 rounded-2xl" />
       </div>
     </div>
   );

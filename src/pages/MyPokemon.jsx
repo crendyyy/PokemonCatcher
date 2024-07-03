@@ -1,8 +1,5 @@
 import { Link } from "react-router-dom";
-import Greatball from "../components/icons/Greatball";
-import Masterball from "../components/icons/Masterball";
-import Pokeball from "../components/icons/Pokeball";
-import Wallet from "../components/icons/Wallet";
+import PokeballImg from "../assets/PokeballBg.png";
 
 const MyPokemon = () => {
   return (
@@ -17,7 +14,7 @@ const MyPokemon = () => {
         <div className="w-full h-0.5 bg-gray-100"></div>
         <div className="flex justify-center w-full">
           <div className="flex flex-col items-center justify-center gap-8">
-            <img className="w-full h-96 rounded-3xl" src="" alt="" />
+            <img className="w-full h-96 rounded-3xl" src={PokeballImg} alt="" />
             <div className="flex flex-col">
               <span className="text-3xl font-semibold text-center">
                 You dont have any Pokemons
