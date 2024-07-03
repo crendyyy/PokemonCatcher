@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  h1 {
+    @apply text-2xl font-semibold;
+  }
+
+  h2 {
+    @apply text-xl font-semibold;
+  }
+
+  h3 {
+    @apply text-lg font-semibold;
+  }
+
+  h4 {
+    @apply font-semibold;
+  }
+  /* Menyembunyikan scrollbar di Webkit (Chrome, Safari, dll.) */
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Menyembunyikan scrollbar di Firefox */
+  .hide-scrollbar {
+    scrollbar-width: none;
+  }
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Inter, sans-serif;
+}
+body {
+  font-size: 16px;
+  background: #f4f4f4;
+  line-height: 1.5em;
+}
+.top {
+  transform: rotate(90deg);
+}
+
+.left {
+  transform: rotate(0deg);
+}
+
+.right {
+  transform: rotate(180deg);
+}
