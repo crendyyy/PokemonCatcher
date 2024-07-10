@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { UserContext } from "../Context/FormContext";
 
 const LoginPage = () => {
@@ -7,8 +7,6 @@ const LoginPage = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState({});
   const { login } = useContext(UserContext);
-
-  const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -21,9 +19,7 @@ const LoginPage = () => {
       return;
     }
     const isSucces = login(email, password);
-    if (isSucces) {
-      navigate("/");
-    } else {
+    if (!isSucces) {
       setError({ general: "Email dan Password salah" });
     }
   };

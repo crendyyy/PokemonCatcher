@@ -6,7 +6,6 @@ import Wallet from "../components/icons/Wallet";
 import PokeballImg from "../assets/Pokeball.png";
 import GreatBallImg from "../assets/GreatBall.png";
 import MasterBallImg from "../assets/MasterBall.png";
-import BackgroundHero from "../assets/BgShop.png";
 
 const Shop = () => {
   return (

@@ -1,12 +1,17 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Pokeball from "../components/icons/Pokeball";
 import Activity from "../components/icons/Activity";
 import ShoppingBag from "../components/icons/ShoppingBag";
 import CardIcon from "../components/icons/CardIcon";
+import { useContext, useEffect } from "react";
+import { UserContext } from "../Context/FormContext";
 const Home = () => {
+  const { user } = useContext(UserContext);
   return (
     <div className="flex flex-col gap-6">
-      <h1 className="!text-[40px]">Welcome To Pokemon Catching Game</h1>
+      <h1 className="!text-[40px]">
+        Welcome To Pokemon Catching Game {user.userName}
+      </h1>
       <div className="flex flex-col gap-4">
         <div className="flex items-center justify-between p-6 bg-white rounded-3xl">
           <h2 className="!font-semibold">Start your Journey!!</h2>
@@ -27,7 +32,7 @@ const Home = () => {
               <Activity />
               <div className="flex flex-col gap-1">
                 <p className="text-base font-semibold">Pokemon Catched</p>
-                <h1 className="!text-5xl">12</h1>
+                <h1 className="!text-5xl">{user.pokemons.length}</h1>
               </div>
             </div>
             <div className="flex flex-col w-full gap-4 p-4 bg-blue-100 rounded-xl">
@@ -40,8 +45,8 @@ const Home = () => {
             <div className="flex flex-col w-full gap-4 p-4 bg-purple-100 rounded-xl">
               <CardIcon />
               <div className="flex flex-col gap-1">
-                <p className="text-base font-semibold">Pokemon Catched</p>
-                <h1 className="!text-5xl">12</h1>
+                <p className="text-base font-semibold">Coins</p>
+                <h1 className="!text-5xl">{user.coins}</h1>
               </div>
             </div>
           </div>
