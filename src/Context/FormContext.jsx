@@ -11,6 +11,7 @@ export const UserProvider = ({ children }) => {
     greatBall: 1,
     masterBall: 1,
   });
+
   const [registerUser, setRegisterUser] = useState([
     {
       userName: "blonded.",
@@ -21,6 +22,8 @@ export const UserProvider = ({ children }) => {
       pokeballs: pokeballs,
     },
   ]);
+  console.log(user);
+  console.log(registerUser);
 
   const login = (email, password) => {
     const foundUser = registerUser.find(
@@ -33,6 +36,7 @@ export const UserProvider = ({ children }) => {
       return false;
     }
   };
+
   const register = (userName, email, password) => {
     const newUser = {
       userName: userName,
@@ -43,7 +47,7 @@ export const UserProvider = ({ children }) => {
       pokeballs: pokeballs,
     };
     const foundUser = registerUser.find(
-      (user) => user.userName === userName && user.email === email
+      (user) => user.userName === userName || user.email === email
     );
     if (!foundUser) {
       setRegisterUser([...registerUser, newUser]);
@@ -52,6 +56,7 @@ export const UserProvider = ({ children }) => {
       return false;
     }
   };
+
   const logout = () => {
     if (user) {
       const userIndex = registerUser.findIndex(
@@ -65,6 +70,7 @@ export const UserProvider = ({ children }) => {
       setUser(null);
     }
   };
+
   return (
     <UserContext.Provider value={{ user, setUser, login, register, logout }}>
       {children}

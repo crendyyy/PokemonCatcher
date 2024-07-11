@@ -1,13 +1,40 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { UserContext } from "../Context/FormContext";
 
 const Register = () => {
   const [userName, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
+  const [error, setError] = useState({});
+  const { register } = useContext(UserContext);
+  const navigate = useNavigate();
 
-  const handleRegister = () => {};
+  const handleRegister = (e) => {
+    e.preventDefault();
+    let typeError = {};
+
+    if (!userName || !password || !email || !repeatPassword) {
+      typeError.empty = "Harap mengisi semua input";
+    }
+
+    if (Object.keys(typeError).length > 0) {
+      setError(typeError);
+      return;
+    }
+
+    if (password === repeatPassword) {
+      const isSucces = register(userName, email, password);
+      if (isSucces) {
+        navigate("/login");
+      } else {
+        setError({ general: "Email atau Username sudah terdaftar" });
+      }
+    } else {
+      setError({ diffpass: "Password tidak sama" });
+    }
+  };
 
   return (
     <div className={"flex items-center h-[100vh] bg-white"}>
@@ -19,6 +46,9 @@ const Register = () => {
             lived.
           </p>
           <div className={"border-b border-solid border-[#cccccc]"}></div>
+          {error.general && <p className="text-red-500">{error.general}</p>}
+          {error.empty && <p className="text-red-500">{error.empty}</p>}
+          {error.diffpass && <p className="text-red-500">{error.diffpass}</p>}
         </div>
         <div className="flex flex-col gap-4">
           <div className="flex flex-col gap-2">

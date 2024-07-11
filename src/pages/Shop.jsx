@@ -6,8 +6,11 @@ import Wallet from "../components/icons/Wallet";
 import PokeballImg from "../assets/Pokeball.png";
 import GreatBallImg from "../assets/GreatBall.png";
 import MasterBallImg from "../assets/MasterBall.png";
+import { useContext } from "react";
+import { UserContext } from "../Context/FormContext";
 
 const Shop = () => {
+  const { user } = useContext(UserContext);
   return (
     <>
       <div className="relative w-full bg-white rounded-[20px] p-6 flex gap-10 flex-col">
@@ -19,19 +22,25 @@ const Shop = () => {
           <div className="flex items-center gap-6">
             <div className="flex gap-1 text-[#6F767E]">
               <Pokeball />
-              <p className="font-bold text-base text-[#6F767E]">0</p>
+              <p className="font-bold text-base text-[#6F767E]">
+                {user.pokeballs.pokeBall}
+              </p>
             </div>
             <div className="flex gap-1 text-[#6F767E]">
               <Greatball />
-              <p className="font-bold text-base text-[#6F767E]">0</p>
+              <p className="font-bold text-base text-[#6F767E]">
+                {user.pokeballs.greatBall}
+              </p>
             </div>
             <div className="flex gap-1 text-[#6F767E]">
               <Masterball />
-              <p className="font-bold text-base text-[#6F767E]">0</p>
+              <p className="font-bold text-base text-[#6F767E]">
+                {user.pokeballs.masterBall}
+              </p>
             </div>
             <div className="flex gap-1 text-[#6F767E]">
               <Wallet />
-              <p className="font-bold text-base text-[#6F767E]">0</p>
+              <p className="font-bold text-base text-[#6F767E]">{user.coins}</p>
             </div>
           </div>
         </div>

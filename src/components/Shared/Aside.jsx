@@ -1,11 +1,19 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import HomeIcon from "../icons/HomeIcon";
 import Box from "../icons/Box";
 import TennisIcon from "../icons/TennisIcon";
 import ShopIcon from "../icons/Shop";
 import LogoutIcon from "../icons/LogoutIcon";
+import { useContext } from "react";
+import { UserContext } from "../../Context/FormContext";
 
 const Sidebar = () => {
+  const navigate = useNavigate();
+  const { logout } = useContext(UserContext);
+  const handleLogout = () => {
+    logout();
+    navigate("/login");
+  };
   return (
     <aside className="fixed inset-0 z-50 p-6 bg-white w-80">
       <div className="flex flex-col justify-between h-full">
@@ -27,7 +35,10 @@ const Sidebar = () => {
           </div>
         </div>
         <div className="flex flex-col px-3 pt-4 border-t-2 border-gray-200 border-solid">
-          <button className="flex gap-2 text-base font-semibold text-gray-500">
+          <button
+            onClick={handleLogout}
+            className="flex gap-2 text-base font-semibold text-gray-500"
+          >
             <LogoutIcon />
             Logout
           </button>
