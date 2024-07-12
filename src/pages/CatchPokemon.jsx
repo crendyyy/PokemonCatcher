@@ -134,7 +134,11 @@ const CatchPokemon = () => {
                     pokeballs === "PokeBall"
                       ? "border-blue-500"
                       : "border-gray-200"
-                  } border-solid rounded-xl`}
+                  } border-solid rounded-xl ${
+                    user.pokeballs.pokeBall === 0
+                      ? "opacity-40 pointer-events-none"
+                      : ""
+                  }`}
                 >
                   <div className="flex justify-start w-full gap-3 p-4">
                     <Pokeball />
@@ -152,7 +156,11 @@ const CatchPokemon = () => {
                     pokeballs === "GreatBall"
                       ? "border-blue-500"
                       : "border-gray-200"
-                  } border-solid rounded-xl`}
+                  } border-solid rounded-xl  ${
+                    user.pokeballs.greatBall === 0
+                      ? "opacity-40 pointer-events-none"
+                      : ""
+                  }`}
                 >
                   <div className="flex justify-start w-full gap-3 p-4">
                     <Greatball />
@@ -170,7 +178,11 @@ const CatchPokemon = () => {
                     pokeballs === "MasterBall"
                       ? "border-blue-500"
                       : "border-gray-200"
-                  } border-solid rounded-xl`}
+                  } border-solid rounded-xl  ${
+                    user.pokeballs.masterBall === 0
+                      ? "opacity-40 pointer-events-none"
+                      : ""
+                  }`}
                 >
                   <div className="flex justify-start w-full gap-3 p-4">
                     <Masterball />
