@@ -23,7 +23,7 @@ const Layout = () => {
     <>
       <div className="flex">
         <Aside />
-        <div className="flex flex-col w-full bg-white ml-80">
+        <div className="flex flex-col w-full bg-[#F4F4F4]  ml-80">
           {path === "/myPokemon" || path === "/shop" ? (
             <>
               <Navbar />

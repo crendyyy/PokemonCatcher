@@ -3,7 +3,7 @@ export const getRandomPokemonId = () => {
 };
 
 export const calculateCatchProbability = (group, pokeBallType) => {
-  if (pokeBallType === "Pokeball") {
+  if (pokeBallType === "PokeBall") {
     if (group === "A") {
       return 0.5;
     } else if (group === "B") {
@@ -11,7 +11,7 @@ export const calculateCatchProbability = (group, pokeBallType) => {
     } else if (group === "C") {
       return 0.025;
     }
-  } else if (pokeBallType === "Great Ball") {
+  } else if (pokeBallType === "GreatBall") {
     if (group === "A") {
       return 0.75;
     } else if (group === "B") {
@@ -19,7 +19,7 @@ export const calculateCatchProbability = (group, pokeBallType) => {
     } else if (group === "C") {
       return 0.15;
     }
-  } else if (pokeBallType === "Master Ball") {
+  } else if (pokeBallType === "MasterBall") {
     return 1.0;
   }
   return 0.0;
