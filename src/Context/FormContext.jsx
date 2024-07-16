@@ -9,7 +9,7 @@ export const UserProvider = ({ children }) => {
   const [pokeballs, setPokeballs] = useState({
     pokeBall: 1,
     greatBall: 1,
-    masterBall: 1,
+    masterBall: 3,
   });
 
   const [registerUser, setRegisterUser] = useState([

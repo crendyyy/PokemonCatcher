@@ -11,6 +11,8 @@ import {
   getGroupFromId,
   getRandomPokemonId,
 } from "../libs/utils";
+import { useNavigate } from "react-router-dom";
+import { formatDate } from "../libs/FormatDate";
 
 const CatchPokemon = () => {
   const { user, setUser } = useContext(UserContext);
@@ -19,6 +21,9 @@ const CatchPokemon = () => {
   const [actualName, setActualName] = useState("");
   const [nickname, setNickname] = useState("");
   const [pokeballs, setPokeballs] = useState("");
+
+  const navigate = useNavigate();
+
   const pokemonImage = getPokemonImage(searchPokemon);
 
   useEffect(() => {
@@ -94,6 +99,7 @@ const CatchPokemon = () => {
         alert("Not enough Master Ball");
       }
     } else if (pokeballType === "") {
+      setIsCaught(null);
       alert("Please Select Pokeball");
     }
   };
@@ -101,7 +107,26 @@ const CatchPokemon = () => {
   const typeBall = (pokeballsType) => {
     setPokeballs((prev) => (prev === pokeballsType ? "" : pokeballsType));
   };
-  console.log(pokeballs);
+  const savePokemon = () => {
+    if (nickname.trim() === "") {
+      alert("Please enter a nickname");
+    } else {
+      const date = new Date();
+      const caughtPokemon = {
+        uid: Date.now(),
+        id: searchPokemon,
+        name: actualName,
+        nickname: nickname,
+        image: pokemonImage,
+        dateCaught: formatDate(date),
+      };
+      setUser({
+        ...user,
+        pokemons: [...user.pokemons, caughtPokemon],
+      });
+      navigate("/myPokemon");
+    }
+  };
 
   return (
     <div className="flex flex-col w-full gap-10 p-8 bg-white rounded-2xl">
@@ -125,97 +150,159 @@ const CatchPokemon = () => {
           </div>
         ) : (
           <>
-            <div className="flex flex-col w-3/5 gap-6 h-fit">
-              <h2>Chose Your Pokeball</h2>
-              <div className="flex flex-col gap-2">
-                <div
-                  onClick={() => typeBall("PokeBall")}
-                  className={`flex flex-col gap-2 border-2 ${
-                    pokeballs === "PokeBall"
-                      ? "border-blue-500"
-                      : "border-gray-200"
-                  } border-solid rounded-xl ${
-                    user.pokeballs.pokeBall === 0
-                      ? "opacity-40 pointer-events-none"
-                      : ""
-                  }`}
-                >
-                  <div className="flex justify-start w-full gap-3 p-4">
-                    <Pokeball />
-                    <div className="flex flex-col">
-                      <p className="text-xs font-medium text-gray-400">
-                        {user.pokeballs.pokeBall} Left
-                      </p>
-                      <p className="text-base font-semibold">Poke Ball</p>
+            {isCaught === null && (
+              <>
+                <div className="flex flex-col w-3/5 gap-6 h-fit">
+                  <h2>Chose Your Pokeball</h2>
+                  <div className="flex flex-col gap-2">
+                    <div
+                      onClick={() => typeBall("PokeBall")}
+                      className={`flex flex-col gap-2 border-2 ${
+                        pokeballs === "PokeBall"
+                          ? "border-blue-500"
+                          : "border-gray-200"
+                      } border-solid rounded-xl ${
+                        user.pokeballs.pokeBall === 0
+                          ? "opacity-40 pointer-events-none"
+                          : ""
+                      }`}
+                    >
+                      <div className="flex justify-start w-full gap-3 p-4">
+                        <Pokeball />
+                        <div className="flex flex-col">
+                          <p className="text-xs font-medium text-gray-400">
+                            {user.pokeballs.pokeBall} Left
+                          </p>
+                          <p className="text-base font-semibold">Poke Ball</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      onClick={() => typeBall("GreatBall")}
+                      className={`flex flex-col gap-2 border-2 ${
+                        pokeballs === "GreatBall"
+                          ? "border-blue-500"
+                          : "border-gray-200"
+                      } border-solid rounded-xl  ${
+                        user.pokeballs.greatBall === 0
+                          ? "opacity-40 pointer-events-none"
+                          : ""
+                      }`}
+                    >
+                      <div className="flex justify-start w-full gap-3 p-4">
+                        <Greatball />
+                        <div className="flex flex-col">
+                          <p className="text-xs font-medium text-gray-400">
+                            {user.pokeballs.greatBall} Left
+                          </p>
+                          <p className="text-base font-semibold">Great Ball</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      onClick={() => typeBall("MasterBall")}
+                      className={`flex flex-col gap-2 border-2 ${
+                        pokeballs === "MasterBall"
+                          ? "border-blue-500"
+                          : "border-gray-200"
+                      } border-solid rounded-xl  ${
+                        user.pokeballs.masterBall === 0
+                          ? "opacity-40 pointer-events-none"
+                          : ""
+                      }`}
+                    >
+                      <div className="flex justify-start w-full gap-3 p-4">
+                        <Masterball />
+                        <div className="flex flex-col">
+                          <p className="text-xs font-medium text-gray-400">
+                            {user.pokeballs.masterBall} Left
+                          </p>
+                          <p className="text-base font-semibold">Master Ball</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <button
+                    onClick={() => catchPokemon(pokeballs)}
+                    className="w-full py-3 text-sm font-bold text-white bg-blue-500 rounded-xl hover:bg-blue-400"
+                  >
+                    Catch a Pokemon
+                  </button>
+                </div>
+                <div className="h-96">
+                  <div className="flex flex-col h-full gap-2">
+                    <img src={pokemonImage} alt="" />
+                    <div className="flex flex-col justify-center">
+                      <span className="text-4xl font-semibold text-center">
+                        You Found A Pokemon!
+                      </span>
+                      <span className="text-xl text-center">
+                        Go Catch A {""}
+                        <span className="text-xl font-bold">{actualName}</span>
+                      </span>
                     </div>
                   </div>
                 </div>
-                <div
-                  onClick={() => typeBall("GreatBall")}
-                  className={`flex flex-col gap-2 border-2 ${
-                    pokeballs === "GreatBall"
-                      ? "border-blue-500"
-                      : "border-gray-200"
-                  } border-solid rounded-xl  ${
-                    user.pokeballs.greatBall === 0
-                      ? "opacity-40 pointer-events-none"
-                      : ""
-                  }`}
-                >
-                  <div className="flex justify-start w-full gap-3 p-4">
-                    <Greatball />
-                    <div className="flex flex-col">
-                      <p className="text-xs font-medium text-gray-400">
-                        {user.pokeballs.greatBall} Left
-                      </p>
-                      <p className="text-base font-semibold">Great Ball</p>
+              </>
+            )}
+            {isCaught && (
+              <>
+                <div className="flex justify-center w-full py-12">
+                  <div className="flex flex-col items-center justify-center h-full gap-4 w-96">
+                    <img src={pokemonImage} alt="" className="h-52 w-52" />
+                    <div className="flex flex-col justify-center gap-2">
+                      <span className="text-4xl font-semibold text-center">
+                        Congrats!
+                      </span>
+                      <span className="text-xl text-center">
+                        You've found a {""}
+                        <span className="text-xl font-bold">{actualName}</span>
+                      </span>
+                    </div>
+                    <div className="flex flex-col w-full gap-4">
+                      <span className="text-base font-semibold">Nickname</span>
+                      <input
+                        type="text"
+                        value={nickname}
+                        onChange={(e) => setNickname(e.target.value)}
+                        className="w-full p-3 text-base font-semibold text-gray-600 bg-gray-100 rounded-xl"
+                      />
+                      <button
+                        onClick={savePokemon}
+                        className="py-3 text-sm font-bold text-white bg-blue-500 w-f\ rounded-xl hover:bg-blue-400"
+                      >
+                        Save Pokemon
+                      </button>
                     </div>
                   </div>
                 </div>
-                <div
-                  onClick={() => typeBall("MasterBall")}
-                  className={`flex flex-col gap-2 border-2 ${
-                    pokeballs === "MasterBall"
-                      ? "border-blue-500"
-                      : "border-gray-200"
-                  } border-solid rounded-xl  ${
-                    user.pokeballs.masterBall === 0
-                      ? "opacity-40 pointer-events-none"
-                      : ""
-                  }`}
-                >
-                  <div className="flex justify-start w-full gap-3 p-4">
-                    <Masterball />
-                    <div className="flex flex-col">
-                      <p className="text-xs font-medium text-gray-400">
-                        {user.pokeballs.masterBall} Left
-                      </p>
-                      <p className="text-base font-semibold">Master Ball</p>
+              </>
+            )}
+            {isCaught === false && (
+              <>
+                <div className="flex justify-center w-full py-12">
+                  <div className="flex flex-col items-center justify-center h-full gap-4">
+                    <img src={pokemonImage} alt="" className="h-52 w-52" />
+                    <div className="flex flex-col justify-center gap-2">
+                      <span className="text-4xl font-semibold text-center">
+                        Ahh, Shit!
+                      </span>
+                      <span className="text-xl text-center">
+                        A {""}
+                        <span className="text-xl font-bold">{actualName}</span>
+                        {""} has slipped away from your Poke Ball.
+                      </span>
                     </div>
+                    <button
+                      onClick={findPokemon}
+                      className="w-full py-3 text-sm font-bold text-white bg-blue-500 rounded-xl hover:bg-blue-400"
+                    >
+                      Catch another Pokemon
+                    </button>
                   </div>
                 </div>
-              </div>
-              <button
-                onClick={() => catchPokemon(pokeballs)}
-                className="w-full py-3 text-sm font-bold text-white bg-blue-500 rounded-xl hover:bg-blue-400"
-              >
-                Catch a Pokemon
-              </button>
-            </div>
-            <div className="h-96">
-              <div className="flex flex-col h-full gap-2">
-                <img src={pokemonImage} alt="" />
-                <div className="flex flex-col justify-center">
-                  <span className="text-4xl font-semibold text-center">
-                    You Found A Pokemon!
-                  </span>
-                  <span className="text-xl text-center">
-                    Go Catch A {""}
-                    <span className="text-xl font-bold">{actualName}</span>
-                  </span>
-                </div>
-              </div>
-            </div>
+              </>
+            )}
           </>
         )}
       </div>
