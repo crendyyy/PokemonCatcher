@@ -12,7 +12,7 @@ const ReleaseDialog = ({ onClose, onSubmit, nickname }) => {
           </div>
           <button
             onClick={onClose}
-            className="flex items-center justify-center rounded-full w-9 h-9 bg-slate-100"
+            className="flex items-center justify-center rounded-full w-9 h-9 bg-slate-100 hover:bg-slate-300"
           >
             <CloseIcon />
           </button>

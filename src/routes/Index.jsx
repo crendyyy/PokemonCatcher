@@ -24,9 +24,9 @@ const Layout = () => {
       <div className="flex">
         <Aside />
         <div className="flex flex-col w-full bg-[#F4F4F4]  ml-80">
+          <Navbar />
           {path === "/myPokemon" || path === "/shop" ? (
             <>
-              <Navbar />
               <img
                 className="relative w-full bg-transparent h-80"
                 src={background}
@@ -38,8 +38,7 @@ const Layout = () => {
             </>
           ) : (
             <>
-              <Navbar />
-              <main className="w-full p-10 bg-[#F4F4F4]">
+              <main className="w-full p-10 bg-[#F4F4F4] mt-[72px]">
                 <Outlet />
               </main>
             </>

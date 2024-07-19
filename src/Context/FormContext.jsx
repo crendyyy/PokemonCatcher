@@ -6,11 +6,23 @@ export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [coins, setCoins] = useState(1000);
   const [pokemons, setPokemons] = useState([]);
-  const [pokeballs, setPokeballs] = useState({
-    pokeBall: 1,
-    greatBall: 1,
-    masterBall: 3,
-  });
+  const [pokeballs, setPokeballs] = useState([
+    {
+      pokeBall: {
+        label: "Poke Ball",
+        quantity: 3,
+      },
+      greatBall: {
+        label: "Great Ball",
+        quantity: 1,
+      },
+      masterBall: {
+        label: "Master Ball",
+        quantity: 7,
+      },
+    },
+  ]);
+  console.log(pokeballs);
 
   const [registerUser, setRegisterUser] = useState([
     {
