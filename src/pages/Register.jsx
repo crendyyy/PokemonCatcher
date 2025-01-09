@@ -27,7 +27,7 @@ const Register = () => {
     if (password === repeatPassword) {
       const isSucces = register(userName, email, password);
       if (isSucces) {
-        navigate("/login");
+        navigate("/");
       } else {
         setError({ general: "Email atau Username sudah terdaftar" });
       }
@@ -122,7 +122,7 @@ const Register = () => {
         </div>
         <p className={"flex gap-1 text-[#8d8484] text-sm"}>
           sudah punya akun?
-          <Link className={"text-black font-semibold text-sm"} to="/login">
+          <Link className={"text-black font-semibold text-sm"} to="/">
             Login!
           </Link>
         </p>

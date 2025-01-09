@@ -5,7 +5,7 @@ const NotFound = () => {
       <nav>
         <ol className="text-sm">
           <span>You must to </span>
-          <a href="/login" className="text-sm text-blue-400 underline">
+          <a href="/" className="text-sm text-blue-400 underline">
             Login
           </a>
         </ol>

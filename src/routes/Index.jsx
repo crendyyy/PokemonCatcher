@@ -51,9 +51,9 @@ const Layout = () => {
 
 const routes = [
   {
-    path: "login",
+    path: "/",
     element: (
-      <RedirectIfLogin to="/">
+      <RedirectIfLogin to="/dashboard">
         <LoginPage />
       </RedirectIfLogin>
     ),
@@ -73,9 +73,10 @@ const routes = [
           </ProtectedRoute>
         ),
         children: [
+      
           {
-            index: true,
-            element: <Home />,
+            path: "/dashboard",
+            children: [{ index: true, element: <Home /> }],
           },
           {
             path: "/catchPokemon",
