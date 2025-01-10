@@ -5,6 +5,7 @@ export const UserContext = createContext();
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [coins, setCoins] = useState(1000);
+  const [attempt, setAttempt] = useState(0);
   const [pokemons, setPokemons] = useState([]);
   const [pokeballs, setPokeballs] = useState([
     {
@@ -32,6 +33,7 @@ export const UserProvider = ({ children }) => {
       coins: coins,
       pokemons: pokemons,
       pokeballs: pokeballs,
+      attempt: attempt
     },
   ]);
   console.log(user);
@@ -57,6 +59,7 @@ export const UserProvider = ({ children }) => {
       coins: coins,
       pokemons: pokemons,
       pokeballs: pokeballs,
+      attempt: attempt
     };
     const foundUser = registerUser.find(
       (user) => user.userName === userName || user.email === email

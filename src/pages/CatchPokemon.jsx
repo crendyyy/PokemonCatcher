@@ -65,6 +65,7 @@ const CatchPokemon = () => {
       if (ball.pokeBall.quantity >= 1) {
         setUser({
           ...user,
+          attempt: user.attempt + 1,
           pokeballs: [
             {
               ...ball,
@@ -83,6 +84,8 @@ const CatchPokemon = () => {
       if (ball.greatBall.quantity >= 1) {
         setUser({
           ...user,
+          attempt: user.attempt + 1,
+
           pokeballs: [
             {
               ...ball,
@@ -101,6 +104,8 @@ const CatchPokemon = () => {
       if (ball.masterBall.quantity >= 1) {
         setUser({
           ...user,
+          attempt: user.attempt + 1,
+
           pokeballs: [
             {
               ...ball,

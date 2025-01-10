@@ -12,7 +12,7 @@ const Sidebar = () => {
   const { logout } = useContext(UserContext);
   const handleLogout = () => {
     logout();
-    navigate("/login");
+    navigate("/");
   };
   return (
     <aside className="fixed inset-0 z-50 p-6 bg-white w-80">
@@ -20,7 +20,7 @@ const Sidebar = () => {
         <div className="flex flex-col gap-12">
           <div className="flex items-center h-12">
             <Link to="/">
-              <h1>LOGO</h1>
+              <h1>Pokemon Catcher</h1>
             </Link>
           </div>
           <div className="flex flex-col gap-2">

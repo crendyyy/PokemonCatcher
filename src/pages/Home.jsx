@@ -39,7 +39,7 @@ const Home = () => {
               <ShoppingBag />
               <div className="flex flex-col gap-1">
                 <p className="text-base font-semibold">Catch Attempts</p>
-                <h1 className="!text-5xl">12</h1>
+                <h1 className="!text-5xl">{user.attempt}</h1>
               </div>
             </div>
             <div className="flex flex-col w-full gap-4 p-4 bg-purple-100 rounded-xl">

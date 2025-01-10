@@ -11,6 +11,7 @@ const Navbar = () => {
   const { user } = useContext(UserContext);
   const typeBall = user.pokeballs[0];
   console.log(typeBall.pokeBall.quantity);
+  console.log(user.attempt);
   return (
     <nav className="flex items-center z-40 justify-end w-full px-10 py-6 bg-white border-l-2 border-b border-[#F4F4F4] border-solid fixed top-0 left-0 right-0">
       <div className="flex gap-6">
@@ -38,7 +39,6 @@ const Navbar = () => {
             <p className="font-bold text-base text-[#6F767E]">{user.coins}</p>
           </div>
         </div>
-        <HomeIcon />
       </div>
     </nav>
   );
