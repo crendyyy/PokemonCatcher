@@ -35,7 +35,7 @@ const LoginPage = () => {
             <label
               className={"block items-center justify-start font-bold text-base"}
             >
-              Username
+              Email
             </label>
             <input
               type="email"
