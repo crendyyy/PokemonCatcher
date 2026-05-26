@@ -12,33 +12,43 @@ import BackgroundMyPokemonHero from "../assets/BgMyPokemon.png";
 import RedirectIfLogin from "./RedirectIfLogin";
 import NotFound from "../pages/NotFound";
 import ProtectedRoute from "./ProtectedRoute";
+import { useState, useEffect } from "react";
 
 const Layout = () => {
   const location = useLocation();
   const path = location.pathname;
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  // Auto-close sidebar on route change (mobile)
+  useEffect(() => {
+    setIsSidebarOpen(false);
+  }, [location.pathname]);
 
   let background =
     path === "/myPokemon" ? BackgroundMyPokemonHero : BackgroundShopHero;
   return (
     <>
       <div className="flex">
-        <Aside />
-        <div className="flex flex-col w-full bg-[#F4F4F4]  ml-80">
-          <Navbar />
+        <Aside
+          isOpen={isSidebarOpen}
+          onClose={() => setIsSidebarOpen(false)}
+        />
+        <div className="flex flex-col w-full bg-[#F4F4F4] md:ml-80">
+          <Navbar onToggleSidebar={() => setIsSidebarOpen((prev) => !prev)} />
           {path === "/myPokemon" || path === "/shop" ? (
             <>
               <img
-                className="relative w-full bg-transparent h-80"
+                className="relative w-full bg-transparent h-48 md:h-80 object-cover"
                 src={background}
                 alt=""
               />
-              <main className="w-full px-10 top-[-64px] relative">
+              <main className="w-full px-4 md:px-10 top-[-32px] md:top-[-64px] relative">
                 <Outlet />
               </main>
             </>
           ) : (
             <>
-              <main className="w-full p-10 bg-[#F4F4F4] mt-[72px]">
+              <main className="w-full p-4 md:p-10 bg-[#F4F4F4] mt-[64px] md:mt-[72px]">
                 <Outlet />
               </main>
             </>

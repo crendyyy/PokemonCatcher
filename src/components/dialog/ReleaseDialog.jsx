@@ -4,7 +4,7 @@ import Dialog from "../Shared/Dialog";
 const ReleaseDialog = ({ onClose, onSubmit, nickname }) => {
   return (
     <Dialog onCancel={onClose}>
-      <div className="flex flex-col gap-6 p-6 bg-white w-96 rounded-2xl">
+      <div className="flex flex-col gap-6 p-4 md:p-6 bg-white w-[calc(100vw-2rem)] max-w-sm rounded-2xl">
         <div className="flex items-center justify-between w-full">
           <div className="flex gap-4">
             <div className="w-4 h-8 bg-red-200 rounded"></div>

@@ -34,8 +34,6 @@ const CatchPokemon = () => {
       setActualName(pokemon.name || "Unknown");
     }
   }, [pokemon]);
-  console.log(pokemon);
-  console.log(searchPokemon);
 
   const findPokemon = () => {
     const randomId = getRandomPokemonId();
@@ -49,10 +47,6 @@ const CatchPokemon = () => {
 
     const randomValue = Math.random();
     const isCaughtPokemon = randomValue <= catchProbality;
-
-    console.log(randomValue);
-    console.log(catchProbality);
-    console.log(isCaughtPokemon);
 
     if (isCaughtPokemon) {
       setIsCaught(true);
@@ -151,21 +145,21 @@ const CatchPokemon = () => {
   };
 
   return (
-    <div className="flex flex-col w-full gap-10 p-8 bg-white rounded-2xl">
+    <div className="flex flex-col w-full gap-6 md:gap-10 p-4 md:p-8 bg-white rounded-2xl">
       <div className="flex flex-col justify-start gap-2">
-        <h1 className="!text-3xl">Catch Pokemon</h1>
+        <h1 className="!text-2xl md:!text-3xl">Catch Pokemon</h1>
         <h2 className="text-gray-400">Good luck mate</h2>
       </div>
       <div className="w-full h-0.5 bg-gray-100"></div>
-      <div className="flex items-start justify-between gap-16 px-6">
+      <div className="flex flex-col md:flex-row items-start justify-between gap-8 md:gap-16 px-0 md:px-6">
         {isLoading ? (
           <p>Loading..</p>
         ) : (
           <>
             {!searchPokemon ? (
               <div className="flex justify-center w-full">
-                <div className="flex flex-col gap-2">
-                  <img src={PokeCardImg} alt="" />
+                <div className="flex flex-col gap-2 w-full max-w-sm">
+                  <img src={PokeCardImg} alt="" className="w-full" />
                   <button
                     onClick={findPokemon}
                     className="w-full py-3 text-sm font-bold text-white bg-blue-500 rounded-xl hover:bg-blue-400"
@@ -178,7 +172,7 @@ const CatchPokemon = () => {
               <>
                 {isCaught === null && (
                   <>
-                    <div className="flex flex-col w-3/5 gap-6 h-fit">
+                    <div className="flex flex-col w-full md:w-3/5 gap-4 md:gap-6 h-fit">
                       <h2>Chose Your Pokeball</h2>
                       <div className="flex flex-col gap-2">
                         <div
@@ -193,13 +187,13 @@ const CatchPokemon = () => {
                               : ""
                           }`}
                         >
-                          <div className="flex justify-start w-full gap-3 p-4">
+                          <div className="flex justify-start w-full gap-3 p-3 md:p-4">
                             <Pokeball />
                             <div className="flex flex-col">
                               <p className="text-xs font-medium text-gray-400">
                                 {ball.pokeBall.quantity} Left
                               </p>
-                              <p className="text-base font-semibold">
+                              <p className="text-sm md:text-base font-semibold">
                                 {ball.pokeBall.label}
                               </p>
                             </div>
@@ -217,13 +211,13 @@ const CatchPokemon = () => {
                               : ""
                           }`}
                         >
-                          <div className="flex justify-start w-full gap-3 p-4">
+                          <div className="flex justify-start w-full gap-3 p-3 md:p-4">
                             <Greatball />
                             <div className="flex flex-col">
                               <p className="text-xs font-medium text-gray-400">
                                 {ball.greatBall.quantity} Left
                               </p>
-                              <p className="text-base font-semibold">
+                              <p className="text-sm md:text-base font-semibold">
                                 {ball.greatBall.label}
                               </p>
                             </div>
@@ -241,13 +235,13 @@ const CatchPokemon = () => {
                               : ""
                           }`}
                         >
-                          <div className="flex justify-start w-full gap-3 p-4">
+                          <div className="flex justify-start w-full gap-3 p-3 md:p-4">
                             <Masterball />
                             <div className="flex flex-col">
                               <p className="text-xs font-medium text-gray-400">
                                 {ball.masterBall.quantity} Left
                               </p>
-                              <p className="text-base font-semibold">
+                              <p className="text-sm md:text-base font-semibold">
                                 {ball.masterBall.label}
                               </p>
                             </div>
@@ -261,16 +255,16 @@ const CatchPokemon = () => {
                         Catch a Pokemon
                       </button>
                     </div>
-                    <div className="h-96">
-                      <div className="flex flex-col h-full gap-2">
-                        <img src={pokemonImage} alt="" />
+                    <div className="w-full md:w-auto">
+                      <div className="flex flex-col h-full gap-2 items-center">
+                        <img src={pokemonImage} alt="" className="w-40 h-40 md:w-auto md:h-auto" />
                         <div className="flex flex-col justify-center">
-                          <span className="text-4xl font-semibold text-center">
+                          <span className="text-2xl md:text-4xl font-semibold text-center">
                             You Found A Pokemon!
                           </span>
-                          <span className="text-xl text-center">
+                          <span className="text-lg md:text-xl text-center">
                             Go Catch A {""}
-                            <span className="text-xl font-bold">
+                            <span className="font-bold">
                               {actualName}
                             </span>
                           </span>
@@ -281,16 +275,16 @@ const CatchPokemon = () => {
                 )}
                 {isCaught && (
                   <>
-                    <div className="flex justify-center w-full py-12">
-                      <div className="flex flex-col items-center justify-center h-full gap-4 w-96">
-                        <img src={pokemonImage} alt="" className="h-52 w-52" />
+                    <div className="flex justify-center w-full py-6 md:py-12">
+                      <div className="flex flex-col items-center justify-center h-full gap-4 w-full max-w-sm">
+                        <img src={pokemonImage} alt="" className="h-40 w-40 md:h-52 md:w-52" />
                         <div className="flex flex-col justify-center gap-2">
-                          <span className="text-4xl font-semibold text-center">
+                          <span className="text-2xl md:text-4xl font-semibold text-center">
                             Congrats!
                           </span>
-                          <span className="text-xl text-center">
+                          <span className="text-lg md:text-xl text-center">
                             You've found a {""}
-                            <span className="text-xl font-bold">
+                            <span className="font-bold">
                               {actualName}
                             </span>
                           </span>
@@ -307,7 +301,7 @@ const CatchPokemon = () => {
                           />
                           <button
                             onClick={savePokemon}
-                            className="py-3 text-sm font-bold text-white bg-blue-500 w-f\ rounded-xl hover:bg-blue-400"
+                            className="w-full py-3 text-sm font-bold text-white bg-blue-500 rounded-xl hover:bg-blue-400"
                           >
                             Save Pokemon
                           </button>
@@ -318,16 +312,16 @@ const CatchPokemon = () => {
                 )}
                 {isCaught === false && (
                   <>
-                    <div className="flex justify-center w-full py-12">
-                      <div className="flex flex-col items-center justify-center h-full gap-4">
-                        <img src={pokemonImage} alt="" className="h-52 w-52" />
+                    <div className="flex justify-center w-full py-6 md:py-12">
+                      <div className="flex flex-col items-center justify-center h-full gap-4 w-full max-w-sm">
+                        <img src={pokemonImage} alt="" className="h-40 w-40 md:h-52 md:w-52" />
                         <div className="flex flex-col justify-center gap-2">
-                          <span className="text-4xl font-semibold text-center">
+                          <span className="text-2xl md:text-4xl font-semibold text-center">
                             Ahh, Shit!
                           </span>
-                          <span className="text-xl text-center">
+                          <span className="text-lg md:text-xl text-center">
                             A {""}
-                            <span className="text-xl font-bold">
+                            <span className="font-bold">
                               {actualName}
                             </span>
                             {""} has slipped away from your Poke Ball.
